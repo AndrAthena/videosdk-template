@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useMemo } from "react";
+import { MeetingProvider } from "@videosdk.live/react-sdk";
+import { MeetingContainer } from "./MeetingContainer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const { meetingId, token, participantId } = useMemo(() => {
+    const location = window.location;
+
+    const urlParams = new URLSearchParams(location.search);
+
+    const paramKeys = {
+      meetingId: "meetingId",
+      token: "token",
+      participantId: "participantId",
+    };
+
+    Object.keys(paramKeys).forEach((key) => {
+      paramKeys[key] = urlParams.get(key)
+        ? decodeURIComponent(urlParams.get(key))
+        : null;
+    });
+
+    return paramKeys;
+  }, []);
+
+  return meetingId && token && participantId ? (
+    <MeetingProvider
+      config={{
+        meetingId,
+        micEnabled: false,
+        webcamEnabled: false,
+        name: "recorder",
+        participantId,
+      }}
+      token={token}
+      joinWithoutUserInteraction
+    >
+      <MeetingContainer />
+    </MeetingProvider>
+  ) : null;
+};
 
 export default App;
