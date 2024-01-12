@@ -12,9 +12,9 @@ export const MeetingContainer = () => {
   });
 
   return isMeetingJoined ? (
-    <div>
+    <div className="meeting-container">
       <ParticipantsAudioPlayer />
-      <div>
+      <div className="participant-view-container">
         {[...remoteSpeakers].map((participant) => {
           return (
             <ParticipantView
