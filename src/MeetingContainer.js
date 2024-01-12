@@ -12,27 +12,9 @@ export const MeetingContainer = () => {
   });
 
   return isMeetingJoined ? (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh",
-      }}
-    >
+    <div>
       <ParticipantsAudioPlayer />
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: remoteSpeakers?.length > 1 ? "1fr 1fr" : "1fr",
-          flex: 1,
-          maxHeight: `100vh`,
-          overflowY: "auto",
-          gap: "20px",
-          padding: "20px",
-          alignItems: "center",
-          justifyItems: "center",
-        }}
-      >
+      <div>
         {[...remoteSpeakers].map((participant) => {
           return (
             <ParticipantView
@@ -44,15 +26,8 @@ export const MeetingContainer = () => {
       </div>
     </div>
   ) : (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <div class="loader"></div>
+    <div className="container-loader">
+      <div className="loader"></div>
     </div>
   );
 };

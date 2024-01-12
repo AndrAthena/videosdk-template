@@ -11,7 +11,7 @@ const ParticipantAudio = ({ participantId }) => {
       mediaStream.addTrack(micStream.track);
 
       audioPlayer.current.srcObject = mediaStream;
-      audioPlayer.current.play().catch((err) => {});
+      audioPlayer.current.play().catch(console.error);
     } else {
       audioPlayer.current.srcObject = null;
     }
