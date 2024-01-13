@@ -27,8 +27,8 @@ export const ParticipantView = ({ participantId }) => {
           //
           url={videoStream}
           //
-          height={"100%"}
-          width={"100%"}
+          height={"100vh"}
+          width={"auto%"}
           onError={(err) => {
             console.error(err, "participant video error");
           }}
