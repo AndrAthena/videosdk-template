@@ -26,7 +26,7 @@ export const ParticipantView = ({ participantId }) => {
           url={videoStream}
           height="100vh"
           width="auto"
-          style={{ transform: "scale(1,-1)" }}
+          style={{ transform: "scale(-1,1)" }}
           onError={(err) => {
             console.error(err, "participant video error");
           }}
