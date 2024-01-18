@@ -17,18 +17,16 @@ export const ParticipantView = ({ participantId }) => {
     <div className="participant-view">
       {webcamOn && webcamStream ? (
         <ReactPlayer
-          //
-          playsinline // very very imp prop
+          playsinline
           pip={false}
           light={false}
           controls={false}
-          muted={true}
-          playing={true}
-          //
+          muted
+          playing
           url={videoStream}
-          //
-          height={"100vh"}
-          width={"auto%"}
+          height="100vh"
+          width="auto"
+          style={{ transform: "scale(1,-1)" }}
           onError={(err) => {
             console.error(err, "participant video error");
           }}
